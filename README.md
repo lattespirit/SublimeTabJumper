@@ -1,7 +1,7 @@
 # SublimeTabJumper
 **Sublime TabJumper** is a sublime-text-3 plugin that jumping to last active tab or a opened tab quickly. It supports searching all opened tab names in single or multiple groups(`group` in Sublime means split window). When plugin triggered, last active tab name will be seleted.
 
-![SublimeTabJumper](http://i.imgur.com/gFT20V7.gif)
+![SublimeTabJumper](http://i.imgur.com/0WSH2HB.gif)
 
 # Installation
 
