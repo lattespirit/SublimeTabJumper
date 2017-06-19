@@ -5,7 +5,7 @@
 
 # Installation
 
-* ### Package Control(recommended but not pulished now)
+* ### Package Control(recommended but not published now)
     * Press `Cmd/Ctrl + Shift + P` to open command palette
     * Type `Package Control: Install Package` and press enter
     * Type `TabJumper` and press enter
