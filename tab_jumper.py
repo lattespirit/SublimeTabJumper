@@ -14,15 +14,29 @@ class TabJumperCommand(sublime_plugin.WindowCommand):
         self.views = self.window.views()
         self.origin_active_view = self.window.active_view_in_group(self.window.active_group())
 
+        # Check if file or buffer rendered
         if self.views:
             for view_index, view in enumerate(self.views):
                 if view.file_name() == None:
                     viewName = 'Untitled'
                     viewPath = 'untitled'
                 else:
-                    file_path = self.window.project_data()['folders'][0]['path']
                     viewName = view.file_name()[view.file_name().rfind(os.sep) + 1:]
-                    viewPath = view.file_name()[len(file_path) + 1:]
+                    base_path = view.file_name()[:view.file_name().rfind(os.sep)]
+                    if self.window.project_data() != None:
+                        for folder in self.window.project_data()['folders']:
+                            if base_path.find(folder['path']) != -1:
+                                base_name = folder['path'][folder['path'].rfind(os.sep) + 1:]
+                                relative_file_path = view.file_name().replace(folder['path'] + os.sep, '')
+                                if len(self.window.project_data()['folders']) > 1:
+                                    viewPath = base_name + os.sep + relative_file_path
+                                else:
+                                    viewPath = relative_file_path
+                                break
+                            else:
+                                viewPath = base_path
+                    else:
+                        viewPath = view.file_name()
 
                 self.opened_views.append([viewName, viewPath])
 
