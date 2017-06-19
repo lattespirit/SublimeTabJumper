@@ -1,3 +1,4 @@
+import os
 import sublime
 import sublime_plugin
 
@@ -20,7 +21,7 @@ class TabJumperCommand(sublime_plugin.WindowCommand):
                     viewPath = 'untitled'
                 else:
                     file_path = self.window.project_data()['folders'][0]['path']
-                    viewName = view.file_name()[view.file_name().rfind('/') + 1:]
+                    viewName = view.file_name()[view.file_name().rfind(os.sep) + 1:]
                     viewPath = view.file_name()[len(file_path) + 1:]
 
                 self.opened_views.append([viewName, viewPath])
@@ -30,9 +31,9 @@ class TabJumperCommand(sublime_plugin.WindowCommand):
                     selected_view = view_index
                     break;
                 else:
-                    selected_view = -1
+                    selected_view = False
 
-            self.window.show_quick_panel(self.opened_views, self.on_done, False, selected_view, self.on_highlighted)
+            self.window.show_quick_panel(self.opened_views, self.on_done, sublime.KEEP_OPEN_ON_FOCUS_LOST, selected_view, self.on_highlighted)
         else:
             self.window.status_message('No Files or Buffer Opened.')
 
