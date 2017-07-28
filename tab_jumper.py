@@ -11,7 +11,7 @@ class TabJumperCommand(sublime_plugin.WindowCommand):
 
     def run(self):
         global LAST_ACTIVATED_VIEW
-        self.views = self.window.views()
+        self.views = sublime.active_window().views()
         self.origin_active_view = self.window.active_view_in_group(self.window.active_group())
 
         # Check if file or buffer rendered
