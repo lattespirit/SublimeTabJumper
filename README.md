@@ -14,7 +14,7 @@
 * ### Manual Installation
     * Using Git
         * Open terminal and change the path to Sublime `Packages` directory.(`Preferences > Browse Packages`).
-        * Run `git clone https://github.com/lattespirit/SublimeTabJumper.git`.
+        * Run `git clone https://github.com/lattespirit/sublime-tab-jumper.git`.
         * Done.
 
     * Using zip File
